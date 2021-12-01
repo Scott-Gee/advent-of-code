@@ -11,11 +11,7 @@ data %>%
 
 # Part 2 
 data %>% 
-  mutate(X2 = lag(X1),
-         X3 = lag(X2)) %>%  # Create extra columns for sliding sum
-  filter(!is.na(X2),
-         !is.na(X3)) %>% 
-  mutate(sum = X1 + X2 + X3,
+  mutate(sum = X1 + lag(X1) + lag(X1, 2),
          larger_than_before = if_else(lag(sum) < sum, 1, 0)) %>% 
   summarise(total_larger = sum(larger_than_before, na.rm = TRUE))
 
