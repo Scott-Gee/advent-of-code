@@ -16,9 +16,9 @@ common_value <- function(n, type = c('most', 'least')){
   unique_x <- unique(x) # Get uniques (0,1)
   
   if(type == 'most'){
-  unique_x[which.max(tabulate(match(x, unique_x))]  # Get the list of 0s and 1s and take the max
+    unique_x[which.max(tabulate(match(x, unique_x)))]  # Get the list of 0s and 1s and take the max
   } else if(type == 'least'){
-    unique_x[which.min(tabulate(match(x, unique_x))] # Get the list of 0s and 1s and take the min
+    unique_x[which.min(tabulate(match(x, unique_x)))] # Get the list of 0s and 1s and take the min
   }
 }
 
@@ -50,7 +50,7 @@ for(i in 1:12){ # Loop through 12 characters
   common <- unique_x[which.max(tabulate(match(x, unique_x)) + c(0, 1))]  # The c(0,1) adds one on to the value 1 as if they are equally common you take 1
   
   oxygen <- oxygen[x == common]   # Only return those that are TRUE and pass through to new iteration
-  }
+}
 
 # Least common
 co2 <- df$X1
@@ -71,4 +71,4 @@ strtoi(oxygen, base = 2) * strtoi(co2, base = 2)
 
 
 
-  
+
